@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<title>Web Page Design</title>
+<head>
+<style type="text/css">
+
+img {
+	width: 60px;
+	height: 50px;
+}
+
+td{
+   width:60px;
+   height:50px;
+   text-align: center;
+}
+table{
+	/*border: 1px solid black;*/
+	background-color: rgb(195, 195, 195);
+	margin: auto;
+}
+
+#xDiv{
+    position: absolute;
+  	top: 291px;
+  	left: 50% ;
+    z-index : 100;
+}
+
+</style>
+</head>
+<body>
+	<div id = "xDiv">+</div>
+<table>
+	<tbody>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+			<td> </td>
+		</tr>
+	</tbody>
+</table>
+
+<script>
+
+	var NumOfImg = [3, 6, 9, 12];
+	var asa = new Array(100);
+	var trs;
+	var imgs;
+	var targetName = "target.jpg";
+	var DistractName = "myImg300.jpg";
+
+	fillInTdWithImgTags();
+	fillInFun();
+
+// Use A or B to use only space for renew or not
+
+// A) Any key
+    // document.onkeypress = function() {fillInFun()};
+
+// B) Space bar Only!
+    document.body.onkeyup = function(e){
+	    if(e.keyCode == 32){
+	        fillInFun();
+	    }
+	}
+
+    function fillInFun() {
+    	fillInAsaEmpty();
+    	fillInAsaTarget();
+    	fillInAsaDistract();
+    	fillInImgs();
+    }
+
+	function fillInTdWithImgTags(){
+		trs = document.getElementsByTagName("td");
+		var imgElement;
+		for (var i=0; i<trs.length; i++)
+		    {
+		    	imgElement = new Image();
+		        trs[i].appendChild(imgElement);
+		    }
+	}
+
+	function fillInImgs(){
+		imgs = document.getElementsByTagName("img");
+	    for (var i=0; i<imgs.length; i++)
+    		{
+    			imgs[i].src = asa[i];
+        	}
+    }
+
+    function fillInAsaEmpty(){
+    	for (var i=0; i<asa.length; i++)
+		{
+			asa[i] = "empty.jpg"
+		}
+    }
+
+    function fillInAsaTarget(){
+		asa[(Math.floor(Math.random()*100))] = targetName;
+    }
+
+    function fillInAsaDistract(){
+		var imNum = NumOfImg[(Math.floor(Math.random()*NumOfImg.length))]
+		console.log(imNum);
+
+		for (var i=0; i < imNum; i++)
+		{
+			var cur = (Math.floor(Math.random()*100));
+			if (asa[cur] !== "empty.jpg"){
+				i--;
+			} else {
+				asa[cur] = DistractName;
+			}
+		}
+    }
+
+</script>
+</body>
+</html>
